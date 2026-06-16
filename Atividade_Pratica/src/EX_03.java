@@ -54,9 +54,10 @@ public class EX_03 {
 				break;
 			case 6:
 				if (numero1 >= 0) {
+					System.out.println("OBS: Para a Raiz Quadrada, apenas o primeiro número digitado foi considerado.");
 					System.out.printf("Operação: Raiz Quadrada  \nResultado: √%.2f = %.2f\n", numero1, Math.sqrt(numero1));
 				} else {
-					System.out.println("Erro: Não existe raiz quadrada de número negativo nos números reais!");
+					System.out.println("Erro: Não existe raiz quadrada de número negativo!");
 				}
 				break;
 			default:
