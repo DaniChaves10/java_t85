@@ -14,7 +14,7 @@ public static void main(String[] args) {
 		Set<Integer> setNumeros = new HashSet<Integer>();
 		
 		System.out.println("=====================================================");
-		System.out.println("******** ENTRADA DE DADOS - SET ********");
+		System.out.println("******** ENTRADA DE DADOS  SET ********");
 		System.out.println(" Digite 10 números inteiros não repetidos:");
 		System.out.println("=====================================================\n");
 		
