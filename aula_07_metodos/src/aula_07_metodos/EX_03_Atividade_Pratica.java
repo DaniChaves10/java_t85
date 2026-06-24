@@ -9,6 +9,7 @@ public class EX_03_Atividade_Pratica {
 		
 		Scanner leia = new Scanner (System.in);
 		
+		// Estrutura de listas paralelas
 		ArrayList<String> nomeProduto = new ArrayList<String>();
 		ArrayList<Integer> quantidadeProduto = new ArrayList<Integer>();
 		int opcao;
@@ -23,7 +24,7 @@ public class EX_03_Atividade_Pratica {
 		do {
 			System.out.print("Entre uma opção: ");
 			opcao = leia.nextInt();
-			leia.nextLine();
+			leia.nextLine(); // Limpeza necessária do buffer do Scanner após ler um número inteiro
 			
 			switch (opcao) {
 			case 1: 
@@ -43,19 +44,23 @@ public class EX_03_Atividade_Pratica {
 					System.out.print("Digite o nome do produto que deseja atualizar: ");
 					String produtoProcurado = leia.nextLine();
 					
+					// Variável sentinela: começa em -1 indicando que o produto ainda não foi localizado
 					int indiceEncontrado = -1;
 					
+					// Procura manual para contornar a sensibilidade a maiúsculas/minúsculas do método .contains()
 					for (int i = 0; i < nomeProduto.size(); i++) {
 					    if (nomeProduto.get(i).equalsIgnoreCase(produtoProcurado)) {
-					        indiceEncontrado = i; 
-					        break;
+					        indiceEncontrado = i; // Armazena a posição exata do produto encontrado
+					        break; // Interrompe a busca imediatamente após localizar o item
 					    }
 					}
 					
+					// Se a variável mudou de valor, significa que a busca manual teve sucesso
 					if (indiceEncontrado != -1) { 						
 						System.out.print("Digite a NOVA quantidade para o produto " + produtoProcurado + ": ");
 						int novaQuantidade = leia.nextInt();
 						
+						// Atualiza a lista de quantidades usando a mesma posição onde o nome foi encontrado
 						quantidadeProduto.set(indiceEncontrado, novaQuantidade); 
 						System.out.println("\nEstoque atualizado com sucesso!\n");
 					} else {
@@ -69,6 +74,7 @@ public class EX_03_Atividade_Pratica {
 				if (nomeProduto.isEmpty()) {
 					System.out.println("O estoque está vazio!");
 				} else {
+					// Laço for tradicional para conseguir interar as duas listas ao mesmo tempo pelo índice (i)
 					for (int i = 0; i < nomeProduto.size(); i++) {
 						System.out.println("Produto: " + nomeProduto.get(i) + " | Quantidade: " + quantidadeProduto.get(i));
 					}
@@ -85,6 +91,7 @@ public class EX_03_Atividade_Pratica {
 					
 					int indiceRemover = -1;
 					
+					// Varredura para encontrar o índice do elemento que será excluído (Case-Insensitive)
 					for (int i = 0; i < nomeProduto.size(); i++) {
 						if (nomeProduto.get(i).equalsIgnoreCase(produtoRemover)) {
 							indiceRemover = i;
@@ -93,6 +100,7 @@ public class EX_03_Atividade_Pratica {
 					}
 					
 					if (indiceRemover != -1) {
+						// O método .remove() além de deletar o item, retorna o dado removido para podermos exibir no console
 						String produtoApagado = nomeProduto.remove(indiceRemover);
 						quantidadeProduto.remove(indiceRemover);
 						
